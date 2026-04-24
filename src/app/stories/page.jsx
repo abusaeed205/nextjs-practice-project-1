@@ -88,9 +88,11 @@ const Stories = () => {
     return (
         <div className=' h-screen py-20 '>
             <p>Welcome to the stories page!</p>
-            {
-                devStories.map((stories) => <SroryCard key={stories.id} stories={stories}></SroryCard>)
-            }
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4'>
+                {
+                    devStories.map((stories) => <SroryCard key={stories.id} stories={stories}></SroryCard>)
+                }
+            </div>
         </div>
     );
 };
