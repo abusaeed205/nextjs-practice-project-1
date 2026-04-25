@@ -12,7 +12,7 @@ const Banner = () => {
         const password = prompt("Please enter your password:");
         if (password === "55555") {
             console.log(router);
-            router.push("/login")
+            router.push("/dashboard");
 
         }
     }

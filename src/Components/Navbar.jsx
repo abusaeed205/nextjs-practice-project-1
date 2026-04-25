@@ -2,11 +2,15 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+     const pathname=usePathname()
+     if(pathname.startsWith("/dashboard"))return <></>
+
     const [isOpen, setIsOpen] = useState(false);
 
-    const navLinks = [
+    const Navlink = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
         { name: 'Login', href: '/login' },
@@ -26,12 +30,12 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-8">
-                        {navLinks.map((link) => (
+                    <div className="hidden md:flex items-center space-x-4">
+                        {Navlink.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200"
+                                className="nav-link"
                             >
                                 {link.name}
                             </Link>
@@ -56,11 +60,11 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-64' : 'max-h-0'}`}>
                 <div className="px-4 py-3 bg-white shadow-lg space-y-2">
-                    {navLinks.map((link) => (
+                    {Navlink.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg font-medium transition-colors"
+                            className="nav-link block"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}
